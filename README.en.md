@@ -1,10 +1,12 @@
-# LoreEngine
-
-![LoreEngine Logo](assets/img/logo.jpeg)
-
-**Available Languages / Idiomas Disponibles:**
-- [English (EN)](README.en.md) - Current language
-- [Español (ES)](README.es.md)
+<div style="background-color: #001a4d; padding: 40px 20px; border-radius: 10px; text-align: center; margin-bottom: 40px; border: 2px solid #0066ff;">
+  <img src="assets/img/logo.jpeg" alt="LoreEngine Logo" width="280" height="280" style="margin-bottom: 20px;">
+  <h1 style="color: #00d4ff; margin: 20px 0 10px 0; font-size: 2.5em;">LoreEngine</h1>
+  <p style="color: #b0b0b0; margin: 10px 0; font-size: 1.1em;">Domain-specific language for interactive narrative experiences</p>
+  <p style="color: #0066ff; margin: 15px 0 0 0;">
+    <a href="README.es.md" style="color: #00d4ff; text-decoration: none; margin: 0 15px; font-weight: bold;">Español</a> •
+    <a href="README.en.md" style="color: #0066ff; text-decoration: none; margin: 0 15px; font-weight: bold;">English</a>
+  </p>
+</div>
 
 ---
 
