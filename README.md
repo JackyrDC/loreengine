@@ -1,4 +1,6 @@
-![LoreEngine Logo](assets/img/logo.svg)
+<div align="center">
+  <img src="assets/img/logo.svg" alt="LoreEngine Logo" width="300" height="300">
+</div>
 
 # LoreEngine
 
