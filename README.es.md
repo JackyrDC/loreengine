@@ -67,7 +67,7 @@ El lenguaje organiza las narrativas alrededor de tres conceptos fundamentales:
 ### Instrucciones de Instalación
 
 1. Navega al directorio de LoreEngine:
-   ```
+   ```bash
    cd loreengine
    ```
 
@@ -580,7 +580,7 @@ El intérprete ejecuta el AST en el entorno de tiempo de ejecución.
 
 ### Flujo del Pipeline
 
-```
+```text
 Código Fuente
     |
     v
@@ -686,7 +686,7 @@ python main_gui.py
 
 ### Nivel Superior
 
-```
+```text
 programa        := declaración*
 
 declaración     := decl_personaje | decl_escena | decl_decision
@@ -703,7 +703,7 @@ opción          := 'opción' CADENA '->' IDENTIFICADOR
 
 ### Sentencias
 
-```
+```text
 sentencia       := sent_mostrar | sent_asignación | sent_decision 
                  | sent_si | sent_dado
 
@@ -717,7 +717,7 @@ sent_dado       := 'dado' '{' (sent_si)+ ('sino' '{' sentencia* '}')? '}'
 
 ### Expresiones
 
-```
+```text
 expresión       := término (('+' | '-') término)*
 término         := factor (('*' | '/') factor)*
 factor          := ENTERO | CADENA | IDENTIFICADOR ('.' IDENTIFICADOR)?
