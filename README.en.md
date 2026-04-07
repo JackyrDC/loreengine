@@ -1,5 +1,7 @@
 # LoreEngine
 
+![LoreEngine Logo](assets/img/logo.jpeg)
+
 **Available Languages / Idiomas Disponibles:**
 - [English (EN)](README.en.md) - Current language
 - [Español (ES)](README.es.md)

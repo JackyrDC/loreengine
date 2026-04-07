@@ -1,5 +1,7 @@
 # LoreEngine
 
+![LoreEngine Logo](assets/img/logo.jpeg)
+
 Un lenguaje de dominio específico (DSL) para crear experiencias narrativas interactivas.
 
 ---
