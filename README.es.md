@@ -1,93 +1,33 @@
 # LoreEngine
 
-Un lenguaje de dominio específico (DSL) para crear experiencias narrativas interactivas.
+**Idiomas Disponibles / Available Languages:**
+- [English (EN)](README.en.md)
+- [Español (ES)](README.es.md) - Idioma actual
 
 ---
 
-## Seleccionar Idioma / Select Language
+## Tabla de Contenidos
 
-**Español (ES):**
-- Ver documentación completa en: [README.es.md](README.es.md)
-
-**English (EN):**
-- View full documentation at: [README.en.md](README.en.md)
-
----
-
-## Descripción Breve
-
-LoreEngine es un lenguaje de programación diseñado específicamente para desarrollar historias interactivas. Permite definir personajes con atributos dinámicos, escenas narrativas y decisiones ramificadas que el jugador puede tomar. El lenguaje combina la simplicidad de una sintaxis declarativa con el poder de la lógica procedural.
-
-**Características principales:**
-- Declaración intuitiva de personajes y atributos
-- Gestión de escenas y flujo narrativo
-- Sistema de decisiones ramificadas
-- Operadores matemáticos y de comparación
-- Números aleatorios mediante la función `dado(n)`
-- Pipeline de compilación de 4 fases (léxico, sintáctico, semántico, ejecución)
-
-**Ejemplo rápido:**
-
-```lore
-personaje principal Aventurero {
-  salud: 100
-  mana: 50
-}
-
-escena Inicio {
-  mostrar "Bienvenido, aventurero."
-  mostrar "Tu salud: " + Aventurero.salud
-}
-```
-
-**Línea de comandos:**
-
-```bash
-python main_consola.py historia.lore
-```
+1. [Introducción](#introducción)
+2. [Visión General del Lenguaje](#visión-general-del-lenguaje)
+3. [Instalación y Configuración](#instalación-y-configuración)
+4. [Primeros Pasos](#primeros-pasos)
+5. [Conceptos del Lenguaje](#conceptos-del-lenguaje)
+6. [Referencia de Sintaxis](#referencia-de-sintaxis)
+7. [Sistema de Tipos](#sistema-de-tipos)
+8. [Funciones Estándar](#funciones-estándar)
+9. [Ejemplos](#ejemplos)
+10. [Pipeline de Compilación](#pipeline-de-compilación)
+11. [Manejo de Errores](#manejo-de-errores)
+12. [Herramientas](#herramientas)
 
 ---
 
-## Estructura de Archivos
+## Introducción
 
-- `README.md` (este archivo) - Índice multilingüe
-- `README.es.md` - Documentación completa en español
-- `README.en.md` - Complete English documentation
-- `lexer_loreengine.py` - Analizador léxico
-- `parser_loreengine.py` - Analizador sintáctico
-- `semantico_loreengine.py` - Analizador semántico
-- `interprete_loreengine.py` - Intérprete
-- `symbol_table.py` - Tabla de símbolos
-- `ast_nodes.py` - Definición de nodos AST
-- `main_consola.py` - Interfaz de línea de comandos
-- `main_gui.py` - Interfaz gráfica
+LoreEngine es un lenguaje de dominio específico (DSL) diseñado para crear experiencias narrativas interactivas. Permite a los desarrolladores definir personajes, escenas e historias ramificadas mediante una sintaxis intuitiva y declarativa. El lenguaje combina abstracciones narrativas con lógica procedural, permitiendo interacciones dinámicas entre personajes e historias dirigidas por el jugador.
 
----
-
-## Requisitos
-
-- Python 3.7 o superior
-- Ninguna dependencia externa
-
----
-
-## Instalación Rápida
-
-```bash
-cd loreengine
-python main_consola.py
-```
-
----
-
-## Créditos
-
-**Curso:** Diseño de Compiladores (IS-913)  
-**Universidad:** UNAH-COMAYAGUA
-
----
-
-**Para documentación completa, selecciona tu idioma arriba.**
+LoreEngine fue desarrollado como parte del curso **Diseño de Compiladores (IS-913)** de la Universidad Nacional Autónoma de Honduras (UNAH-COMAYAGUA).
 
 ---
 
