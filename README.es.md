@@ -113,12 +113,12 @@ Crea un archivo llamado `historia.lore` con el siguiente contenido:
 
 ```lore
 personaje Protagonista {
-  energía: 100
+  energía = 100
 }
 
 escena Inicio {
   mostrar "Bienvenido a la aventura."
-  mostrar "Tu energía: " + Protagonista.energía
+  mostrar "Tu energía es importante."
 }
 ```
 
@@ -140,19 +140,49 @@ Los personajes son la base de cualquier narrativa de LoreEngine. Cada personaje 
 
 ```lore
 personaje NombreDelPersonaje {
-  atributo1: valor_inicial
-  atributo2: valor_inicial
+  atributo1 = valor_inicial
+  atributo2 = valor_inicial
   ...
 }
 ```
 
 #### Roles de Personajes
 
-Los personajes pueden tener modificadores de rol:
+Los personajes pueden tener un rol que define su tipo. Si no se especifica, el rol es `neutral` por defecto.
+
+Sintaxis con rol:
+```lore
+personaje [rol] NombreDelPersonaje {
+  atributo1 = valor_inicial
+  atributo2 = valor_inicial
+}
+```
+
+Roles disponibles:
 
 - `principal`: El protagonista o agente principal (solo uno por programa)
 - `enemigo`: Un NPC hostil o personaje adversario
 - `aliado`: Un personaje aliado
+- `neutral`: Entidad sin bando o variable de entorno (rol por defecto)
+
+Ejemplos:
+```lore
+personaje principal Heroe {
+  coraje = 50
+}
+
+personaje enemigo Orco {
+  fuerza = 20
+}
+
+personaje aliado Mago {
+  inteligencia = 18
+}
+
+personaje Mercader {
+  oro = 100
+}
+```
 
 #### Acceso a Atributos
 
@@ -209,7 +239,7 @@ Muestra texto al jugador. Acepta expresiones que evalúan a cadenas o números.
 ```lore
 mostrar "Texto fijo"
 mostrar variable
-mostrar "Calculado: " + valor
+mostrar "Valor calculado"
 mostrar personaje.atributo
 ```
 
@@ -271,7 +301,7 @@ dado {
 
 | Operador | Operación | Ejemplo |
 |----------|-----------|---------|
-| `+` | Suma o Concatenación de Cadenas | `5 + 3` = `8` |
+| `+` | Suma | `5 + 3` = `8` |
 | `-` | Resta | `10 - 4` = `6` |
 | `*` | Multiplicación | `3 * 7` = `21` |
 | `/` | División Entera | `15 / 3` = `5` |
@@ -300,14 +330,6 @@ mostrar 2 + 3 * 4      // imprime 14, no 20
 mostrar (2 + 3) * 4    // imprime 20
 ```
 
-#### Concatenación de Cadenas
-
-Las cadenas se concatenan utilizando el operador `+`:
-
-```lore
-mostrar "El jugador tiene " + puntos + " puntos"
-```
-
 ---
 
 ## Sistema de Tipos
@@ -319,8 +341,8 @@ LoreEngine implementa un sistema de tipos simple pero explícito:
 Todos los valores numéricos son enteros (32-bit con signo).
 
 ```lore
-edad: 25
-salud: 100
+edad = 25
+salud = 100
 ```
 
 ### Tipo Cadena
@@ -328,7 +350,7 @@ salud: 100
 Las cadenas son secuencias de caracteres encerradas en comillas dobles.
 
 ```lore
-nombre: "Aragorn"
+nombre = "Aragorn"
 mostrar "Hola, mundo"
 ```
 
@@ -338,8 +360,8 @@ Los atributos de personajes se tipan en la declaración y retienen su tipo duran
 
 ```lore
 personaje Mago {
-  inteligencia: 18
-  mana: 50
+  inteligencia = 18
+  mana = 50
 }
 ```
 
@@ -369,7 +391,8 @@ dado(valor_máximo)
 #### Ejemplo
 
 ```lore
-mostrar "Tirada de d20: " + dado(20)
+mostrar "Realizando tirada de d20..."
+dado(20)
 ```
 
 #### Comportamiento
@@ -386,14 +409,14 @@ mostrar "Tirada de d20: " + dado(20)
 
 ```lore
 personaje Aventurero {
-  salud: 100
-  mana: 50
+  salud = 100
+  mana = 50
 }
 
 escena Inicio {
   mostrar "Eres un aventurero en un mundo peligroso."
-  mostrar "Tu salud: " + Aventurero.salud
-  mostrar "Tu mana: " + Aventurero.mana
+  mostrar "Tu salud es importante para sobrevivir."
+  mostrar "Tu mana es esencial para los hechizos."
 }
 ```
 
@@ -401,8 +424,8 @@ escena Inicio {
 
 ```lore
 personaje principal Heroe {
-  coraje: 50
-  inteligencia: 60
+  coraje = 50
+  inteligencia = 60
 }
 
 escena Bosque {
@@ -413,13 +436,13 @@ escena Bosque {
 escena Lucha {
   mostrar "¡Atacas al monstruo valientemente!"
   Heroe.coraje = Heroe.coraje + 10
-  mostrar "Tu coraje aumentó a " + Heroe.coraje
+  mostrar "Tu coraje aumentó significativamente."
 }
 
 escena Huida {
   mostrar "Corres lo más rápido que puedes."
   Heroe.coraje = Heroe.coraje - 5
-  mostrar "Tu coraje disminuyó a " + Heroe.coraje
+  mostrar "Tu coraje disminuyó."
 }
 
 decision Encuentro {
@@ -432,7 +455,7 @@ decision Encuentro {
 
 ```lore
 personaje Comerciante {
-  oro: 100
+  oro = 100
 }
 
 escena Mercado {
@@ -451,13 +474,13 @@ escena Mercado {
 
 ```lore
 personaje Guerrero {
-  fuerza: 15
-  vida: 80
+  fuerza = 15
+  vida = 80
 }
 
 escena Batalla {
   mostrar "Comienzo del combate..."
-  mostrar "Tu fuerza es: " + Guerrero.fuerza
+  mostrar "Tu fuerza es importante en batalla."
   
   dado {
     si dado(100) < 50 {
@@ -469,7 +492,7 @@ escena Batalla {
     }
   }
   
-  mostrar "Tu fuerza ahora es: " + Guerrero.fuerza
+  mostrar "Tu fuerza se ha modificado."
 }
 ```
 

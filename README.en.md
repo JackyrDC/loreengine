@@ -113,12 +113,12 @@ Create a file named `historia.lore` with the following content:
 
 ```lore
 personaje Protagonista {
-  energía: 100
+  energía = 100
 }
 
 escena Inicio {
   mostrar "Welcome to the adventure."
-  mostrar "Your energy: " + Protagonista.energía
+  mostrar "Your energy is important."
 }
 ```
 
@@ -140,19 +140,49 @@ Characters are the foundation of any LoreEngine narrative. Each character has a 
 
 ```lore
 personaje NombreDelPersonaje {
-  atributo1: valor_inicial
-  atributo2: valor_inicial
+  atributo1 = valor_inicial
+  atributo2 = valor_inicial
   ...
 }
 ```
 
 #### Character Roles
 
-Characters may have role modifiers:
+Characters can have a role that defines their type. If not specified, the role is `neutral` by default.
+
+Syntax with role:
+```lore
+personaje [rol] NombreDelPersonaje {
+  atributo1 = valor_inicial
+  atributo2 = valor_inicial
+}
+```
+
+Available roles:
 
 - `principal`: The protagonist or main agent (only one per program)
 - `enemigo`: A hostile NPC or adversary character
-- `aliado`: An ally character
+- `aliado`: An allied character
+- `neutral`: Entity without allegiance or environment variable (default role)
+
+Examples:
+```lore
+personaje principal Heroe {
+  coraje = 50
+}
+
+personaje enemigo Orco {
+  fuerza = 20
+}
+
+personaje aliado Mago {
+  inteligencia = 18
+}
+
+personaje Mercader {
+  oro = 100
+}
+```
 
 #### Attribute Access
 
@@ -209,7 +239,7 @@ Displays text to the player. Accepts expressions that evaluate to strings or num
 ```lore
 mostrar "Fixed text"
 mostrar variable
-mostrar "Computed: " + valor
+mostrar "Computed value"
 mostrar personaje.atributo
 ```
 
@@ -271,7 +301,7 @@ dado {
 
 | Operator | Operation | Example |
 |----------|-----------|---------|
-| `+` | Addition or String Concatenation | `5 + 3` = `8` |
+| `+` | Addition | `5 + 3` = `8` |
 | `-` | Subtraction | `10 - 4` = `6` |
 | `*` | Multiplication | `3 * 7` = `21` |
 | `/` | Integer Division | `15 / 3` = `5` |
@@ -300,14 +330,6 @@ mostrar 2 + 3 * 4      // prints 14, not 20
 mostrar (2 + 3) * 4    // prints 20
 ```
 
-#### String Concatenation
-
-Strings are concatenated using the `+` operator:
-
-```lore
-mostrar "The player has " + puntos + " points"
-```
-
 ---
 
 ## Type System
@@ -319,8 +341,8 @@ LoreEngine implements a simple but explicit type system:
 All numeric values are integers (32-bit signed).
 
 ```lore
-edad: 25
-salud: 100
+age = 25
+health = 100
 ```
 
 ### String Type
@@ -328,7 +350,7 @@ salud: 100
 Strings are sequences of characters enclosed in double quotes.
 
 ```lore
-nombre: "Aragorn"
+name = "Aragorn"
 mostrar "Hello, world"
 ```
 
@@ -338,8 +360,8 @@ Character attributes are typed at declaration and retain their type throughout e
 
 ```lore
 personaje Mago {
-  inteligencia: 18
-  mana: 50
+  inteligencia = 18
+  mana = 50
 }
 ```
 
@@ -369,7 +391,8 @@ dado(max_value)
 #### Example
 
 ```lore
-mostrar "Rolling a d20: " + dado(20)
+mostrar "Rolling a d20..."
+dado(20)
 ```
 
 #### Behavior
@@ -386,14 +409,14 @@ mostrar "Rolling a d20: " + dado(20)
 
 ```lore
 personaje Aventurero {
-  salud: 100
-  mana: 50
+  salud = 100
+  mana = 50
 }
 
 escena Inicio {
   mostrar "You are an adventurer in a dangerous world."
-  mostrar "Your health: " + Aventurero.salud
-  mostrar "Your mana: " + Aventurero.mana
+  mostrar "Your health is important for survival."
+  mostrar "Your mana is essential for spells."
 }
 ```
 
@@ -401,8 +424,8 @@ escena Inicio {
 
 ```lore
 personaje principal Heroe {
-  coraje: 50
-  inteligencia: 60
+  coraje = 50
+  inteligencia = 60
 }
 
 escena Bosque {
@@ -413,13 +436,13 @@ escena Bosque {
 escena Lucha {
   mostrar "You attack the monster bravely!"
   Heroe.coraje = Heroe.coraje + 10
-  mostrar "Your courage increased to " + Heroe.coraje
+  mostrar "Your courage increased significantly."
 }
 
 escena Huida {
   mostrar "You run as fast as you can."
   Heroe.coraje = Heroe.coraje - 5
-  mostrar "Your courage decreased to " + Heroe.coraje
+  mostrar "Your courage decreased."
 }
 
 decision Encuentro {
@@ -432,7 +455,7 @@ decision Encuentro {
 
 ```lore
 personaje Comerciante {
-  oro: 100
+  oro = 100
 }
 
 escena Mercado {
@@ -451,13 +474,13 @@ escena Mercado {
 
 ```lore
 personaje Guerrero {
-  fuerza: 15
-  vida: 80
+  fuerza = 15
+  vida = 80
 }
 
 escena Batalla {
   mostrar "Combat begins..."
-  mostrar "Your strength is: " + Guerrero.fuerza
+  mostrar "Your strength is important in combat."
   
   dado {
     si dado(100) < 50 {
@@ -469,7 +492,7 @@ escena Batalla {
     }
   }
   
-  mostrar "Your strength is now: " + Guerrero.fuerza
+  mostrar "Your strength has been modified."
 }
 ```
 
