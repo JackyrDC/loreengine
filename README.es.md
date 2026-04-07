@@ -728,21 +728,6 @@ condición       := expresión ('==' | '!=' | '<' | '>' | '<=' | '>=') expresió
 
 ---
 
-## Contribuciones y Licencia
-
-LoreEngine fue desarrollado como un proyecto educativo. Se anima a los estudiantes a extender el lenguaje con nuevas características y capacidades.
-
-Mejoras sugeridas:
-
-- Tipos de datos adicionales (flotantes, listas, mapas)
-- Definiciones y llamadas de funciones
-- Estructuras de bucle (while, for)
-- Coincidencia de patrones avanzada
-- Gestión de activos (imágenes, sonido)
-- Red para narrativas multijugador
-
----
-
 ## Créditos
 
 **Curso:** Diseño de Compiladores (IS-913)  
@@ -755,18 +740,6 @@ Mejoras sugeridas:
 - Intérprete en Tiempo de Ejecución: `interprete_loreengine.py`
 - Tabla de Símbolos: `symbol_table.py`
 - Nodos del AST: `ast_nodes.py`
-
----
-
-## Soporte y Documentación
-
-Para salida de diagnóstico detallada durante el desarrollo:
-
-```bash
-python main_consola.py -d historia.lore   # Modo depuración (si está implementado)
-```
-
-Revisa la salida de diagnóstico después de cada fase de compilación para entender cualquier error detectado.
 
 ---
 
